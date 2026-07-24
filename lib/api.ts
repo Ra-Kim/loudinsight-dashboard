@@ -13,7 +13,7 @@ export async function getUsers({
   const params = new URLSearchParams({
     limit: String(limit),
     skip: String((page - 1) * limit),
-    select: "firstName,lastName,gender,phone,email,address,role",
+    select: "firstName,lastName,gender,phone,email,address,role,image",
   });
 
   if (q) params.set("q", q);

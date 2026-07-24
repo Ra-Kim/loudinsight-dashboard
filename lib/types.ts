@@ -9,6 +9,7 @@ export interface User {
     country: string;
   };
   role: "admin" | "moderator" | "user";
+  image: string
 }
 
 export interface UsersResponse {
