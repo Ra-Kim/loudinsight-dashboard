@@ -3,7 +3,7 @@
 A customer dashboard built with the Next.js App Router, rendered
 server-side from the [DummyJSON Users API](https://dummyjson.com/docs/users).
 
-**Live:** <VERCEL_URL_HERE>
+**Live:** https://loudinsight-dashboard.vercel.app/
 
 ## Running locally
 
@@ -119,8 +119,8 @@ back/forward reconcile correctly.
   `/users/:id` server-side for a fuller profile view per customer.
 - **Designed `not-found` fallback** — a styled `not-found.tsx` matching
   the dashboard's visual language instead of the framework default.
-  - **Gender/role filters** — Gender/role filters via /users/filter; user detail route; 
-  sortable column headers; column visibility;
+  - **Gender/role filters** — Gender/role filters via /users/filter; user detail route;
+    sortable column headers; column visibility;
 
 ## AI usage
 
