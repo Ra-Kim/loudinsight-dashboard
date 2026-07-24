@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight2, Setting, CloseSquare } from "iconsax-reactjs";
+import { ArrowRight2, Setting } from "iconsax-reactjs";
 import { DASHBOARD_NAV, type NavItem } from "@/config/nav";
 import { cn } from "@/lib/utils";
 import { UpgradeCard } from "./upgrade-card";
@@ -21,12 +21,12 @@ export function Sidebar({
   hovered: boolean;
   onHoverChange: (h: boolean) => void;
 }) {
-  const collapsed = !hovered;
+  const collapsed = !hovered && !open;
   return (
     <>
       {open ? (
         <div
-          className="fixed inset-0 z-30 bg-black/40 md:hidden"
+          className="fixed inset-0 z-30 bg-black/40 lg:hidden"
           onClick={onClose}
           aria-hidden
         />
@@ -34,10 +34,10 @@ export function Sidebar({
 
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex flex-col bg-white transition-[transform,width] duration-200 md:translate-x-0 overflow-hidden",
+          "fixed inset-y-0 left-0 z-40 flex flex-col bg-white transition-[transform,width] duration-200 lg:translate-x-0 overflow-hidden",
           open ? "translate-x-0" : "-translate-x-full",
           "w-64",
-          collapsed && "md:w-20",
+          collapsed && "lg:w-20",
         )}
         onMouseEnter={() => onHoverChange(true)}
         onMouseLeave={() => onHoverChange(false)}
@@ -64,14 +64,6 @@ export function Sidebar({
               </span>
             ) : null}
           </Link>
-
-          <button
-            onClick={onClose}
-            className="rounded-md p-1.5 text-gray-400 hover:bg-gray-100 md:hidden"
-            aria-label="Close menu"
-          >
-            <CloseSquare size={22} />
-          </button>
         </div>
 
         {/* nav */}
@@ -88,7 +80,15 @@ export function Sidebar({
 
         {/* footer */}
         <div className="space-y-6 px-4 pb-8">
-          {!collapsed ? <UpgradeCard /> : null}
+          <div
+            className={cn(
+              "w-56 transition-opacity duration-200",
+              collapsed && "md:pointer-events-none md:opacity-0",
+            )}
+          >
+            <UpgradeCard />
+          </div>
+
           <div
             className={cn(
               "flex items-center gap-3 px-2",

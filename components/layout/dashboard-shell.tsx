@@ -19,7 +19,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       />
 
       {/* mobile top bar */}
-      <header className="flex h-14 items-center gap-3 bg-white px-4 md:hidden">
+      <header className="flex h-14 items-center gap-3 bg-white px-4 lg:hidden">
         <button
           onClick={() => setOpen(true)}
           className="rounded-md p-1.5 text-gray-500"
@@ -33,7 +33,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       <main
         className={cn(
           "transition-[padding] duration-200",
-          hovered ? "md:pl-64" : "md:pl-20",
+          hovered ? "lg:pl-64" : "lg:pl-20",
         )}
       >
         {children}

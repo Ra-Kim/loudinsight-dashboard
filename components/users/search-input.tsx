@@ -3,8 +3,15 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState, useTransition } from "react";
 import { SearchNormal1 } from "iconsax-reactjs";
+import { cn } from "@/lib/utils";
 
-export function SearchInput() {
+export function SearchInput({
+  className,
+  placeholder = "Search",
+}: {
+  className?: string;
+  placeholder?: string;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const urlValue = searchParams.get("q") ?? "";
@@ -34,7 +41,12 @@ export function SearchInput() {
   }
 
   return (
-    <label className="flex items-center gap-2 rounded-[10px] h-9.5 bg-[#F9FBFF] px-3 py-2">
+    <label
+      className={cn(
+        "flex h-9.5 items-center gap-2 rounded-[10px] bg-[#F9FBFF] px-3 py-2",
+        className,
+      )}
+    >
       <SearchNormal1
         size={24}
         color="#7E7E7E"
@@ -43,8 +55,8 @@ export function SearchInput() {
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="Search"
-        className="w-54 bg-transparent text-xs outline-none placeholder:text-[#B5B7C0]"
+        placeholder={placeholder}
+        className="w-54 min-w-0 max-w-full bg-transparent text-xs outline-none placeholder:text-[#B5B7C0]"
       />
     </label>
   );

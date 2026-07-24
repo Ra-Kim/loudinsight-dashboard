@@ -1,5 +1,6 @@
 import { Profile2User, Monitor, ProfileTick } from "iconsax-reactjs";
 import { ArrowUp, ArrowDown } from "iconsax-reactjs";
+import { cn } from "@/lib/utils";
 
 export function StatsCards({
   total,
@@ -9,7 +10,7 @@ export function StatsCards({
   avatars: string[];
 }) {
   return (
-    <div className="grid grid-cols-1 gap-6 rounded-3xl bg-white p-8 shadow-sm sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 rounded-3xl bg-white p-6 shadow-sm sm:grid-cols-2 sm:p-8 xl:grid-cols-3">
       <Stat
         icon={<Profile2User size={40} color="#00AC4F" variant="Outline" />}
         label="Total Customers"
@@ -27,6 +28,8 @@ export function StatsCards({
         icon={<Monitor size={40} color="#00AC4F" variant="Outline" />}
         label="Active Now"
         value="189"
+        className="sm:col-span-2 xl:col-span-1"
+        divider
         trend={
           <div className="mt-1 flex -space-x-2">
             {avatars.map((src) => (
@@ -40,7 +43,6 @@ export function StatsCards({
             ))}
           </div>
         }
-        divider
       />
     </div>
   );
@@ -52,20 +54,22 @@ function Stat({
   value,
   trend,
   divider,
+  className,
 }: {
   icon: React.ReactNode;
   label: string;
   value: string;
   trend?: React.ReactNode;
   divider?: boolean;
+  className?: string;
 }) {
   return (
     <div
-      className={
-        divider
-          ? "flex items-center gap-4 sm:border-l sm:border-gray-100 sm:pl-8"
-          : "flex items-center gap-4"
-      }
+      className={cn(
+        "flex items-center gap-4",
+        divider && "xl:border-l xl:border-gray-100 xl:pl-8",
+        className,
+      )}
     >
       <span className="flex h-20 w-20 items-center justify-center rounded-full bg-linear-to-b from-[#D3FFE7] to-[#EFFFF6]">
         {icon}
