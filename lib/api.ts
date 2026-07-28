@@ -32,5 +32,7 @@ export async function getUsers({
     throw new Error(`Failed to fetch users (${res.status})`);
   }
 
-  return res.json();
+  const data = await res.json();
+  console.log(data);
+  return data;
 }
